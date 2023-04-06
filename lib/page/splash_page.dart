@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_blyne_1/constants.dart';
 import 'package:flutter_application_blyne_1/page/auth/login/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
           height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/liubov.jpg"), fit: BoxFit.cover),
+                image: AssetImage("assets/images/People taking care of plants.gif"),),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,16 +51,16 @@ class _SplashScreenState extends State<SplashScreen> {
                 "The Plant Doctor",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromRGBO(255, 255, 255, 1),
+                  color: kPrimaryColor,
                   fontFamily: 'Inter',
-                  fontSize: 85,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   height: 1.2,
                   letterSpacing: 1,
                 ),
               ),
               CircularProgressIndicator(
-                color: Colors.white,
+                color: kPrimaryColor,
                 backgroundColor: Color.fromARGB(70, 235, 234, 234),
               )
             ],
