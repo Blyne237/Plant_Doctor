@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_blyne_1/constants.dart';
 import 'package:flutter_application_blyne_1/page/auth/login/login_page.dart';
+import 'package:flutter_application_blyne_1/page/profile/profile_page.dart';
+
+import 'analyse/analyse_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: ((context) => const SignIn()),
+          builder: ((context) => const Analyse()),
         ),
       ),
     );
@@ -53,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 style: TextStyle(
                   color: kPrimaryColor,
                   fontFamily: 'Inter',
-                  fontSize: 30,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   height: 1.2,
                   letterSpacing: 1,
