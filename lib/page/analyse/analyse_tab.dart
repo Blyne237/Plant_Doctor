@@ -10,14 +10,14 @@ import 'package:dotted_border/dotted_border.dart';
 import '../../widgets/rounded_button.dart';
 import '../../widgets/rounded_button_in_app.dart';
 
-class Analyse extends StatefulWidget {
-  const Analyse({super.key});
+class AnalyseTab extends StatefulWidget {
+  const AnalyseTab({super.key});
 
   @override
-  State<Analyse> createState() => _AnalyseState();
+  State<AnalyseTab> createState() => _AnalyseTabState();
 }
 
-class _AnalyseState extends State<Analyse> {
+class _AnalyseTabState extends State<AnalyseTab> {
   File? image;
   // bool _loading = true;
   // List _predications = [];
@@ -88,37 +88,27 @@ class _AnalyseState extends State<Analyse> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(UniconsLine.arrow_left, size: 30),
-          onPressed: () {},
-        ),
-        backgroundColor: kPrimaryColor,
-        title: const Text('Analyse'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             image != null
-                ? Stack(
+                ? 
+                Stack(
                     children: <Widget>[
                       SizedBox(
                         width: 280.0,
                         height: 280.0,
-                          child: Card(
-                            elevation: 5,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0))),
-                              child: Image.file(
-                                  width: double.infinity,
-                                  height: 280.0,
-                                  image!),
-                            ),
+                        child: Card(
+                          elevation: 5,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))),
+                            child: Image.file(
+                                width: double.infinity, height: 280.0, image!),
                           ),
+                        ),
                       ),
                       Positioned(
                         right: 5.0,
@@ -171,7 +161,7 @@ class _AnalyseState extends State<Analyse> {
                                         UniconsLine.focus_add,
                                         color: Colors.grey,
                                       ), // <-- Icon
-                                      Text("Add Image"), // <-- Text
+                                      Text("Take a picture"), // <-- Text
                                     ],
                                   ),
                                 ),
@@ -198,12 +188,8 @@ class _AnalyseState extends State<Analyse> {
                 : SizedBox(
                     child: Column(children: [
                     RoundedButtonInApp(
-                      text: "Galery",
-                      press: pickImage,
-                    ),
-                    RoundedButtonInApp(
-                      text: "Camera",
-                      press: pickImageC,
+                      text: "SCAN",
+                      press: pickImageC
                     ),
                   ]))
           ],

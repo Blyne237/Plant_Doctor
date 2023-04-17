@@ -6,6 +6,8 @@ import 'package:flutter_application_blyne_1/page/auth/login/login_page.dart';
 import 'package:flutter_application_blyne_1/page/profile/profile_page.dart';
 
 import 'analyse/analyse_page.dart';
+import 'home/add_images.dart';
+import 'home/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: ((context) => const Analyse()),
+          builder: ((context) => const History()),
         ),
       ),
     );
@@ -35,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
@@ -73,3 +75,5 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+

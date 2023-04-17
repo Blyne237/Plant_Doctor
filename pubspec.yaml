@@ -41,7 +41,10 @@ dependencies:
   unicons: ^2.1.1
   image_picker: ^0.8.7+2
   dotted_border: ^2.0.0+3
-  tflite: 
+  loading_overlay: ^0.3.0
+  hive_flutter: ^1.1.0
+  flutter_slidable: ^3.0.0
+  # tflite: 
   
 
 dev_dependencies:

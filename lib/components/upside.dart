@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_blyne_1/constants.dart';
+import 'package:unicons/unicons.dart';
 
 class Upside extends StatelessWidget {
   const Upside({Key? key, required this.imgUrl}) : super(key: key);
@@ -50,9 +51,7 @@ iconBackButton(BuildContext context) {
   return IconButton(
     color: Colors.white,
     iconSize: 28,
-    icon: const Icon(CupertinoIcons.arrow_left),
-    onPressed: (){
-      Navigator.pop(context);
-    },
+    icon: const Icon(UniconsLine.arrow_left, size: 30),
+    onPressed:  () {},
   );
 }

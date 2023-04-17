@@ -15,7 +15,7 @@ class RoundedInputField extends StatefulWidget {
     required this.myController, 
     this.isPassword,
     required this.placeholder,
-    required this.prefixIcon, required this.icon, 
+    this.prefixIcon, required this.icon, 
     })
       : super(key: key);
   

@@ -12,6 +12,8 @@ import 'package:flutter_application_blyne_1/widgets/rounded_button.dart';
 import 'package:flutter_application_blyne_1/widgets/rounded_input_field.dart';
 import 'package:flutter_application_blyne_1/widgets/rounded_password_field.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:loading_overlay/loading_overlay.dart';
+
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -90,100 +92,100 @@ class _SignInState extends State<SignIn> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        body: SizedBox(
-          width: size.width,
-          height: size.height,
-          child: SingleChildScrollView(
-            child: Stack(
-              children: [
-                const Upside(
-                  imgUrl: "assets/images/login.png",
-                ),
-                const PageTitleBar(title: 'Welcome Back'),
-                Padding(
-                  padding: const EdgeInsets.only(top: 320.0),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50),
+        body: LoadingOverlay(
+          isLoading: loading,
+          opacity: 0.5,
+          progressIndicator: const CircularProgressIndicator(),
+          child: SizedBox(
+            width: size.width,
+            height: size.height,
+            child: SingleChildScrollView(
+              child: Stack(
+                children: [
+                  const Upside(
+                    imgUrl: "assets/images/login.png",
+                  ),
+                  const PageTitleBar(title: 'Welcome Back'),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 320.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          topRight: Radius.circular(50),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          // const SizedBox(
+                          //   height: 15,
+                          // ),
+                          // iconButton(context),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            "Login to your account",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontFamily: 'OpenSans',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          Form(
+                            child: Column(
+                              children: [
+                                RoundedInputField(
+                                  icon: Icons.email,
+                                  myController: _emailController, 
+                                  placeholder: 'Email', 
+                                  prefixIcon: const Icon(Icons.email),
+                                ),
+                                RoundedPasswordField(
+                                  myController: _passwordController,
+                                  obscure: true,
+                                  placeholder: "Password",
+                                  prefixIcon: const Icon(Icons.password),
+                                  suffixIcon: null
+                                ),
+                                // switchListTile(),
+                                  
+                                RoundedButton(
+                                        text: 'LOGIN',
+                                        press: () => _login(context),
+                                      ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                UnderPart(
+                                  title: "Don't have an account?",
+                                  navigatorText: "Register here",
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignUp()));
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // const SizedBox(
-                        //   height: 15,
-                        // ),
-                        // iconButton(context),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          "Login to your account",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontFamily: 'OpenSans',
-                              fontSize: 15,
-                              fontWeight: FontWeight.w900),
-                        ),
-                        const SizedBox(
-                          height: 50,
-                        ),
-                        Form(
-                          child: Column(
-                            children: [
-                              RoundedInputField(
-                                icon: Icons.email,
-                                myController: _emailController, 
-                                placeholder: 'Email', 
-                                prefixIcon: const Icon(Icons.email),
-                              ),
-                              RoundedPasswordField(
-                                myController: _passwordController,
-                                obscure: true,
-                                placeholder: "Password",
-                                prefixIcon: const Icon(Icons.password),
-                                suffixIcon: null
-                              ),
-                              // switchListTile(),
-                              loading
-                                  ? const CircularProgressIndicator(
-                                      color: kPrimaryColor,
-                                      backgroundColor:
-                                          Color.fromARGB(70, 235, 234, 234),
-                                    )
-                                  : RoundedButton(
-                                      text: 'LOGIN',
-                                      press: () => _login(context),
-                                    ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              UnderPart(
-                                title: "Don't have an account?",
-                                navigatorText: "Register here",
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SignUp()));
-                                },
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
