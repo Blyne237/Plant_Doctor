@@ -80,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 user!.email!,
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.6),
-                                    fontSize: 12),
+                                    fontSize: 14),
                               ),
                               minLeadingWidth: 0,
                               leading: const CircleAvatar(

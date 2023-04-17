@@ -2,20 +2,23 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_blyne_1/constants.dart';
+import 'package:flutter_application_blyne_1/page/home/home_screen.dart';
 import 'package:flutter_application_blyne_1/page/home/util/image_tile.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 import '../../widgets/rounded_button_in_app.dart';
 
-class History extends StatefulWidget {
-  const History({super.key});
+class AddImage extends StatefulWidget {
+  const AddImage({super.key});
 
   @override
-  State<History> createState() => _HistoryState();
+  State<AddImage> createState() => _AddImageState();
 }
 
-class _HistoryState extends State<History> {
+class _AddImageState extends State<AddImage> {
   final ImagePicker imagePicker = ImagePicker();
   List<XFile>? imageFileList = [];
 
@@ -34,6 +37,20 @@ class _HistoryState extends State<History> {
     });
   }
 
+  Future<void> _submit(context) async {
+    await Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const HomeScreen()));
+      Fluttertoast.showToast(
+        msg: "Images added",
+        backgroundColor: Colors.green[600],
+        fontSize: 15.0,
+      );
+    }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +65,18 @@ class _HistoryState extends State<History> {
               child: const Icon(Icons.add),
             )
           : RoundedButtonInApp(
-            text: 'Submit',
-            press: selectImages,
+              text: 'Submit',
+              press: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
+                Fluttertoast.showToast(
+                  msg: "Images added",
+                  backgroundColor: Colors.green[600],
+                  fontSize: 15.0,
+                );
+              } 
             ),
       body: imageFileList!.isNotEmpty
           ? Stack(

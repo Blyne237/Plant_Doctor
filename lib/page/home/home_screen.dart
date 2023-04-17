@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
   ];
 
   static const List<Widget> _views = [
-    Center(child: Daignose()),
+     Daignose(),
     AnalyseTab(),
 
   ];
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
           appBar: AppBar(
             bottom: TabBar(
               labelColor:kPrimaryColor,
-              unselectedLabelColor: Colors.grey,
+              unselectedLabelColor: Colors.white,
               labelStyle: const TextStyle(fontWeight: FontWeight.bold),
               
               overlayColor:
@@ -68,10 +68,13 @@ class _HomeScreenState extends State<HomeScreen>  with TickerProviderStateMixin 
               indicatorWeight: 5,
               indicatorColor: kPrimaryLightColor,
               indicatorSize: TabBarIndicatorSize.tab,
-              indicatorPadding: const EdgeInsets.all(5),
+              indicatorPadding: const EdgeInsets.only(
+                right: -10,
+                left: -10
+              ),
               indicator: BoxDecoration(
                 border: Border.all(color: kPrimaryLightColor),
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(25),
                 color: kPrimaryLightColor,
               ),
               isScrollable: true,

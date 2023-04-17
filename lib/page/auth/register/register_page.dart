@@ -107,7 +107,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   const PageTitleBar(title: 'Welcome'),
                   Padding(
-                    padding: const EdgeInsets.only(top: 320.0),
+                    padding: const EdgeInsets.only(top: 340.0),
                     child: Container(
                       width: double.infinity,
                       decoration: const BoxDecoration(

@@ -107,7 +107,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   const PageTitleBar(title: 'Welcome Back'),
                   Padding(
-                    padding: const EdgeInsets.only(top: 320.0),
+                    padding: const EdgeInsets.only(top: 340.0),
                     child: Container(
                       width: double.infinity,
                       decoration: const BoxDecoration(
@@ -117,6 +117,7 @@ class _SignInState extends State<SignIn> {
                           topRight: Radius.circular(50),
                         ),
                       ),
+                     
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [

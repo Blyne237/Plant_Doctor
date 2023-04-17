@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 // import 'package:tflite/tflite.dart';
 import 'package:unicons/unicons.dart';
 import 'package:dotted_border/dotted_border.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../widgets/rounded_button.dart';
 import '../../widgets/rounded_button_in_app.dart';
 
@@ -19,6 +19,7 @@ class Analyse extends StatefulWidget {
 
 class _AnalyseState extends State<Analyse> {
   File? image;
+     
   // bool _loading = true;
   // List _predications = [];
 
@@ -85,6 +86,8 @@ class _AnalyseState extends State<Analyse> {
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,20 +108,18 @@ class _AnalyseState extends State<Analyse> {
                 ? Stack(
                     children: <Widget>[
                       SizedBox(
-                        width: 280.0,
-                        height: 280.0,
-                          child: Card(
-                            elevation: 5,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0))),
-                              child: Image.file(
-                                  width: double.infinity,
-                                  height: 280.0,
-                                  image!),
-                            ),
+                        width: 320.0,
+                        height: 320.0,
+                        child: Card(
+                          elevation: 5,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))),
+                            child: Image.file(
+                                width: double.infinity, height: 280.0, image!),
                           ),
+                        ),
                       ),
                       Positioned(
                         right: 5.0,
@@ -189,7 +190,7 @@ class _AnalyseState extends State<Analyse> {
                     width: 280.0,
                     child: Column(
                       children: const [
-                        Text("RESULTS"),
+                        Text("RESULTS here. Sorry this is a test version we are facing issues with image detection package!"),
                         // Text(_predications[0]['label'].toString().substring(2)),
                         // Text('Confidence: ${_predications[0]['confidence'].toString().substring(2)}'),
                       ],

@@ -65,19 +65,13 @@ class _ImageTileState extends State<ImageTile> {
             elevation: 5,
             child: Center(
               child: ListTile(
-                leading: Image.file(widget.image!),
+                leading: Image.file(widget.image!, width: 70,),
                 title: const Text(
                   "Photo",
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    setState(
-                      () {
-                        image = null;
-                      },
-                    );
                     pickImage();
-                    
                   },
                   icon: const Icon(UniconsLine.edit),
                 ),

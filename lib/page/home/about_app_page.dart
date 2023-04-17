@@ -14,8 +14,6 @@ import '../../components/under_part.dart';
 import '../../components/upside.dart';
 import '../auth/register/register_page.dart';
 
-
-
 class About extends StatefulWidget {
   const About({super.key});
 
@@ -24,11 +22,9 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
- 
-
   @override
   Widget build(BuildContext context) {
-     Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
@@ -57,17 +53,25 @@ class _AboutState extends State<About> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // const SizedBox(
-                        //   height: 15,
-                        // ),
-                        // iconButton(context),
-                        const SizedBox(
-                          height: 40,
+                        const Text(
+                          "The Plant Doctor",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontFamily: 'Inter',
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            height: 1.2,
+                            letterSpacing: 1,
+                          ),
                         ),
+                        Image.asset('assets/images/plant_doctor.png',
+                            width: 150, alignment: Alignment.center),
+                        
                         const Padding(
-                          padding: EdgeInsets.all(20.0),
+                          padding: EdgeInsets.all(50.0),
                           child: Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                            "\t\t\t\t\t\tUsers of The Plant Doctor app include: Farmers, gardeners, homeowners, landscape professionals, County Agents, plant quarantine workers, professionals, and scientists.",
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontFamily: 'OpenSans',
@@ -76,13 +80,15 @@ class _AboutState extends State<About> {
                           ),
                         ),
                         const SizedBox(
-                          height: 50,
+                          height: 20,
                         ),
-                          UnderPart(
-                                title: "Copyright here",
-                                navigatorText: "Back",
-                                onTap: () => Navigator.of(context).pop()
-                              ),
+                        UnderPart(
+                            title: "Copyright here",
+                            navigatorText: "Back",
+                            onTap: () => Navigator.of(context).pop()),
+                        const SizedBox(
+                          height: 20,
+                        ),
                       ],
                     ),
                   ),

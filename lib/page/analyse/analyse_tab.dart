@@ -87,112 +87,123 @@ class _AnalyseTabState extends State<AnalyseTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            image != null
-                ? 
-                Stack(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 280.0,
-                        height: 280.0,
-                        child: Card(
-                          elevation: 5,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0))),
-                            child: Image.file(
-                                width: double.infinity, height: 280.0, image!),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 5.0,
-                        child: InkWell(
-                          child: const Icon(
-                            UniconsLine.times_circle,
-                            size: 30,
-                            color: Color.fromARGB(255, 177, 177, 177),
-                          ),
-                          // This is where the _image value sets to null on tap of the red circle icon
-                          onTap: () {
-                            setState(
-                              () {
-                                image = null;
-                              },
-                            );
-                          },
-                        ),
-                      )
-                    ],
-                  )
-                : DottedBorder(
-                    borderType: BorderType.RRect,
-                    radius: const Radius.circular(10),
-                    color: Colors.black,
-                    strokeWidth: 1,
-                    child: Container(
-                      height: 280.0,
-                      width: 280.0,
-                      color: Colors.transparent,
-                      child: Container(
-                          decoration: const BoxDecoration(
-                              color: backGroundColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0))),
-                          child: SizedBox.fromSize(
-                            size: const Size(20, 20),
-                            child: ClipOval(
-                              child: Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  splashColor: backGroundColor,
-                                  onTap: () {
-                                    pickImage();
-                                  },
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const <Widget>[
-                                      Icon(
-                                        UniconsLine.focus_add,
-                                        color: Colors.grey,
-                                      ), // <-- Icon
-                                      Text("Take a picture"), // <-- Text
-                                    ],
-                                  ),
-                                ),
+    Size size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+        body: SizedBox(
+            width: size.width,
+            height: size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/plant_doctor.png',
+                    width: 150, alignment: Alignment.center),
+              
+                image != null
+                    ? 
+                    Stack(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 320.0,
+                            height: 320.0,
+                            child: Card(
+                              elevation: 5,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0))),
+                                child: Image.file(
+                                    width: double.infinity, height: 280.0, image!),
                               ),
                             ),
-                          )),
-                    ),
-                  ),
-            const SizedBox(
-              height: 60,
+                          ),
+                          Positioned(
+                            right: 5.0,
+                            child: InkWell(
+                              child: const Icon(
+                                UniconsLine.times_circle,
+                                size: 30,
+                                color: Color.fromARGB(255, 177, 177, 177),
+                              ),
+                              // This is where the _image value sets to null on tap of the red circle icon
+                              onTap: () {
+                                setState(
+                                  () {
+                                    image = null;
+                                  },
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      )
+                    : DottedBorder(
+                        borderType: BorderType.RRect,
+                        radius: const Radius.circular(10),
+                        color: Colors.black,
+                        strokeWidth: 1,
+                        child: Container(
+                          height: 280.0,
+                          width: 280.0,
+                          color: Colors.transparent,
+                          child: Container(
+                              decoration: const BoxDecoration(
+                                  color: backGroundColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0))),
+                              child: SizedBox.fromSize(
+                                size: const Size(20, 20),
+                                child: ClipOval(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      splashColor: backGroundColor,
+                                      onTap: () {
+                                        pickImage();
+                                      },
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: const <Widget>[
+                                          Icon(
+                                            UniconsLine.focus_add,
+                                            color: Colors.grey,
+                                          ), // <-- Icon
+                                          Text("Take a picture"), // <-- Text
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )),
+                        ),
+                      ),
+                const SizedBox(
+                  height: 60,
+                ),
+                image != null
+                    ? SizedBox(
+                        height: 280.0,
+                        width: 280.0,
+                        
+                        child: Column(
+                          children: const [
+                            Text("RESULTS here. Sorry this is a test version we are facing issues with image detection package!"),
+                            // Text(_predications[0]['label'].toString().substring(2)),
+                            // Text('Confidence: ${_predications[0]['confidence'].toString().substring(2)}'),
+                          ],
+                        ),
+                      )
+                    : SizedBox(
+                        child: Column(children: [
+                        RoundedButtonInApp(
+                          text: "SCAN",
+                          press: pickImageC
+                        ),
+                      ]))
+              ],
             ),
-            image != null
-                ? SizedBox(
-                    height: 280.0,
-                    width: 280.0,
-                    child: Column(
-                      children: const [
-                        Text("RESULTS"),
-                        // Text(_predications[0]['label'].toString().substring(2)),
-                        // Text('Confidence: ${_predications[0]['confidence'].toString().substring(2)}'),
-                      ],
-                    ),
-                  )
-                : SizedBox(
-                    child: Column(children: [
-                    RoundedButtonInApp(
-                      text: "SCAN",
-                      press: pickImageC
-                    ),
-                  ]))
-          ],
+          ),
         ),
       ),
     );

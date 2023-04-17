@@ -6,6 +6,7 @@ import 'package:flutter_application_blyne_1/components/upside.dart';
 import 'package:flutter_application_blyne_1/constants.dart';
 import 'package:flutter_application_blyne_1/page/auth/register/register_page.dart';
 import 'package:flutter_application_blyne_1/page/home/about_app_page.dart';
+import 'package:flutter_application_blyne_1/page/home/add_images.dart';
 import 'package:flutter_application_blyne_1/page/home/home_page.dart';
 import 'package:flutter_application_blyne_1/page/profile/profile_page.dart';
 import 'package:flutter_application_blyne_1/widgets/rounded_button.dart';
@@ -27,6 +28,16 @@ class _DaignoseState extends State<Daignose> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _symptomsController = TextEditingController();
   final TextEditingController _settingController = TextEditingController();
+
+  Future<void> _showToast(context) async{
+    await Fluttertoast.showToast(
+      msg: 'Notice: Slide the cards left to delete items',
+      gravity: ToastGravity.CENTER,
+      backgroundColor: Colors.orange[600],
+      timeInSecForIosWeb: 2,
+      fontSize: 15.0,
+    );
+  }
 
   bool loading = false;
 
@@ -66,7 +77,7 @@ class _DaignoseState extends State<Daignose> {
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 50.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: Container(
                     width: double.infinity,
                     decoration: const BoxDecoration(
@@ -79,6 +90,8 @@ class _DaignoseState extends State<Daignose> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Image.asset('assets/images/plant_doctor.png',
+                            width: 150, alignment: Alignment.center),
                         const Text(
                           "Please enter information about your plant",
                           style: TextStyle(
@@ -144,7 +157,7 @@ class _DaignoseState extends State<Daignose> {
                                 height: size.height * 0.06,
                                 child: const SizedBox(
                                   child: Text(
-                                    "indoors, landscape, garden, nursery, farm, forest",
+                                    "Indoors, landscape, garden, nursery, farm, forest",
                                     style: TextStyle(
                                       color: Color.fromARGB(255, 133, 132, 132),
                                     ),
@@ -157,30 +170,68 @@ class _DaignoseState extends State<Daignose> {
                                 placeholder: "Plant Setting",
                               ),
                               Container(
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 5),
+                                width: size.width * 0.8,
+                                height: size.height * 0.06,
+                                child: const SizedBox(
+                                  child: Text(
+                                    "Add where you live. eg. Yaounde, Douala etc",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 133, 132, 132),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              RoundedInputField(
+                                icon: Icons.email,
+                                myController: _settingController,
+                                placeholder: "Location",
+                              ),
+                              Container(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     RoundedButtonInApp(
-                                      text: 'SUBMIT',
+                                      text: 'Submit',
                                       press: () => _daignose(context),
                                     ),
                                     const SizedBox(
                                       width: 14,
                                     ),
                                     RoundedButtonInApp(
-                                      text: 'ABOUT',
-                                      press: () => Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const About(),
+                                        text: 'Add images',
+                                        press: () =>{ _showToast(context),
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const AddImage(),
+                                            ),
+                                          )
+                                        }
+                                          
                                         ),
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
                               const SizedBox(
                                 height: 20,
+                              ),
+                              UnderPart(
+                                title: "Know more about Plant Doctor?",
+                                navigatorText: "About Us",
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const About()));
+                                },
+                              ),
+                              const SizedBox(
+                                height: 40,
                               ),
                             ],
                           ),
